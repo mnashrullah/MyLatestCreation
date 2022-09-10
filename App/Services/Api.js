@@ -37,6 +37,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
+  const getPokemon = () => api.get('https://pokeapi.co/api/v2/pokemon')
+  const getPokemonDetail = (name) => api.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
 
   // ------
   // STEP 3
@@ -54,7 +56,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
+    getUser,
+    getPokemon,
+    getPokemonDetail
   }
 }
 

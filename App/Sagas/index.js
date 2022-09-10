@@ -7,11 +7,13 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
+import { PokemonTypes } from '../Redux/PokemonRedux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
+import { getPokemon, getPokemonDetail } from './PokemonSagas'
 
 /* ------------- API ------------- */
 
@@ -27,6 +29,8 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+    takeLatest(PokemonTypes.POKEMON_REQUEST, getPokemon, api),
+    takeLatest(PokemonTypes.POKEMON_DETAIL_REQUEST, getPokemonDetail, api)
   ])
 }
